@@ -54,6 +54,23 @@ def VowelsCalculator():
     print("The number of vowels is " + str(vowels))
 
 
+def StringOccurrenceCalculator(str1, str2):
+    if len(str2) < len(str1):
+        return 0
+    count = 0
+    for i in range(len(str2)):
+        if str2[i] == str1[0]:
+            for j in range(len(str1)):
+                if str2[i + j] != str2[j]:
+                    break
+                if j == len(str1) - 1:
+                    count += 1
+    return count
+
+
 if __name__ == '__main__':
     # GreatestCommonDivisor()
-    VowelsCalculator()
+    # VowelsCalculator()
+    str1 = input("Enter str1: ")
+    str2 = input("Enter str2: ")
+    print("number of occurrences: ", StringOccurrenceCalculator(str1, str2))
