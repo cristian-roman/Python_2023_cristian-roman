@@ -40,5 +40,20 @@ def GreatestCommonDivisor():
     print("GCD is " + str(b))
 
 
+def VowelsCalculator():
+    # reading section
+    user_input = input("Enter a string: ")
+
+    # processing section
+    vowels = 0
+    for i in range(len(user_input)):
+        if user_input[i] in "aeiouAEIOU":
+            vowels += 1
+
+    # output section
+    print("The number of vowels is " + str(vowels))
+
+
 if __name__ == '__main__':
-    GreatestCommonDivisor()
+    # GreatestCommonDivisor()
+    VowelsCalculator()
