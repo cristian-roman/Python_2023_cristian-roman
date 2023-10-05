@@ -68,9 +68,24 @@ def StringOccurrenceCalculator(str1, str2):
     return count
 
 
+def TurnTo_lowercase_with_underscore(UpperCamelCaseString):
+    lower_case_string = ""
+    for i in range(len(UpperCamelCaseString)):
+        if UpperCamelCaseString[i].isupper():
+            if i != 0:
+                lower_case_string += "_" + UpperCamelCaseString[i].lower()
+            else:
+                lower_case_string += UpperCamelCaseString[i].lower()
+        else:
+            lower_case_string += UpperCamelCaseString[i]
+    return lower_case_string
+
+
 if __name__ == '__main__':
     # GreatestCommonDivisor()
     # VowelsCalculator()
-    str1 = input("Enter str1: ")
-    str2 = input("Enter str2: ")
-    print("number of occurrences: ", StringOccurrenceCalculator(str1, str2))
+    # str1 = input("Enter str1: ")
+    # str2 = input("Enter str2: ")
+    # print("number of occurrences: ", StringOccurrenceCalculator(str1, str2))
+    print(TurnTo_lowercase_with_underscore("UpperCamelCaseString"))
+g
