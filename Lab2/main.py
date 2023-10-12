@@ -3,8 +3,7 @@
 # Press Ctrl+F5 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-import numpy as np;
-
+import numpy as np
 
 def GetFirstNNumberFromFibonacci(n: int) -> list:
     if n <= 0:
@@ -39,8 +38,43 @@ def IsPrimeNumber(number: int) -> bool:
             return False
     return True
 
+def ListExtractor(a: list, b:list) -> list[list[int]]:
+    # a intersect with b
+    lists = []
+    intersect_result = []
+    for i in a:
+        for j in b:
+            if i == j:
+                intersect_result.append(i)
+    lists.append(intersect_result)
+
+    # a - b
+    a_minus_b_result = []
+    for i in a:
+        if i not in intersect_result:
+            a_minus_b_result.append(i)
+    lists.append(a_minus_b_result)
+
+    # b - a
+    b_minus_a_result = []
+    for i in b:
+        if i not in intersect_result:
+            b_minus_a_result.append(i)
+    lists.append(b_minus_a_result)
+
+    # a union b
+    union_result = []
+    for i in a:
+        union_result.append(i)
+    for i in b:
+        if i not in union_result:
+            union_result.append(i)
+    lists.append(union_result)
+
+    return lists
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     #print(GetFirstNNumberFromFibonacci(10))
     #print(FindPrimeNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 31]))
+    #print(ListExtractor([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]))
