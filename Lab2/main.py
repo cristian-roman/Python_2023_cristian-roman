@@ -73,8 +73,17 @@ def ListExtractor(a: list, b:list) -> list[list[int]]:
 
     return lists
 
+def ComposeSong(music_syllabus:list, steps:list, startingPosition:int) -> list:
+    result = [music_syllabus[startingPosition]]
+    position = startingPosition
+    for step in steps:
+        position = (position + step) % len(music_syllabus)
+        result.append(music_syllabus[position])
+    return result
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     #print(GetFirstNNumberFromFibonacci(10))
     #print(FindPrimeNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 31]))
     #print(ListExtractor([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]))
+    #print(ComposeSong(["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2], 2))
