@@ -4,10 +4,10 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import numpy as np
-from typing import List, Any
+from typing import Tuple
 
 
-def GetFirstNNumberFromFibonacci(n: int) -> list:
+def GetFirstNNumberFromFibonacci(n: int) -> list[int]:
     if n <= 0:
         return []
     if n == 1:
@@ -20,7 +20,7 @@ def GetFirstNNumberFromFibonacci(n: int) -> list:
     return result
 
 
-def FindPrimeNumbers(numbers: list) -> list:
+def FindPrimeNumbers(numbers: list[int]) -> list[int]:
     result = []
     for number in numbers:
         if IsPrimeNumber(number):
@@ -41,7 +41,7 @@ def IsPrimeNumber(number: int) -> bool:
     return True
 
 
-def ListExtractor(a: list, b: list) -> list[list[int]]:
+def ListExtractor(a: list[int], b: list[int]) -> list[list[int]]:
     # A collection intersect with B collection
     lists = []
     intersect_result = []
@@ -77,7 +77,7 @@ def ListExtractor(a: list, b: list) -> list[list[int]]:
     return lists
 
 
-def ComposeSong(music_syllabus: list, steps: list, startingPosition: int) -> list:
+def ComposeSong(music_syllabus: list[str], steps: list[int], startingPosition: int) -> list[str]:
     result = [music_syllabus[startingPosition]]
     position = startingPosition
     for step in steps:
@@ -86,7 +86,7 @@ def ComposeSong(music_syllabus: list, steps: list, startingPosition: int) -> lis
     return result
 
 
-def ReplaceElementsUnderFirstDiagonal(matrx: list[list]) -> list[list]:
+def ReplaceElementsUnderFirstDiagonal(matrx: list[list[int]]) -> list[list[int]]:
     for i in range(len(matrx)):
         for j in range(len(matrx[i])):
             if i > j:
@@ -94,7 +94,7 @@ def ReplaceElementsUnderFirstDiagonal(matrx: list[list]) -> list[list]:
     return matrx
 
 
-def GetNumbersAppearingXTimes(*collection: list[Any], x: int) -> list[Any]:
+def GetNumbersAppearingXTimes(*collection: list[int], x: int) -> list[int]:
     result = []
     first_list = collection[0]
     for comparison_element in first_list:
@@ -108,6 +108,26 @@ def GetNumbersAppearingXTimes(*collection: list[Any], x: int) -> list[Any]:
     return result
 
 
+def GetPalindromeData(numbers: list[int]) -> Tuple[int, int]:
+    count = 0
+    max_palindrome = 0
+    for number in numbers:
+        reversed_number = GetReversedNumber(number)
+        if number == reversed_number:
+            count += 1
+            if number > max_palindrome:
+                max_palindrome = number
+    return count, max_palindrome
+
+
+def GetReversedNumber(number: int) -> int:
+    reversed_number = 0
+    while number > 0:
+        reversed_number = reversed_number * 10 + number % 10
+        number = number // 10
+    return reversed_number
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print(GetFirstNNumberFromFibonacci(10))
@@ -115,4 +135,5 @@ if __name__ == '__main__':
     # print(ListExtractor([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]))
     # print(ComposeSong(["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2], 2))
     # print(ReplaceElementsUnderFirstDiagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-    print(GetNumbersAppearingXTimes([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
+    # print(GetNumbersAppearingXTimes([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
+    #print(GetPalindromeData([123, 121, 989, 989, 123, 123, 123, 123, 123, 123, 123, 123, 123, 123]))
