@@ -179,6 +179,10 @@ def SortLists(*lists: list[Any]) -> list[list[Any]]:
     return result
 
 
+def SortBasedOnRule(tuples: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    return list(sorted(tuples, key=lambda x: x[1][2]))
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print(GetFirstNNumberFromFibonacci(10))
@@ -189,6 +193,7 @@ if __name__ == '__main__':
     # print(GetNumbersAppearingXTimes([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
     # print(GetPalindromeData([123, 121, 989, 989, 123, 123, 123, 123, 123, 123, 123, 123, 123, 123]))
     # print(GetCharactersBasedOnAsciiCodeDivideRule(2, ["test", "hello", "lab002"],False))
-    #print(GetUnableToViewGameSpectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
-    #print(SortLists([1,2,3], [5,6,7], ["a", "b", "c"]))
+    # print(GetUnableToViewGameSpectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
+    # print(SortLists([1,2,3], [5,6,7], ["a", "b", "c"]))
+    #print(SortBasedOnRule([('abc', 'bcd'), ('abc', 'zza')]))
 
