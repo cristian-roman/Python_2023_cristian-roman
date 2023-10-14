@@ -4,7 +4,7 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import numpy as np
-from typing import Tuple
+from typing import Tuple, Any
 
 
 def GetFirstNNumberFromFibonacci(n: int) -> list[int]:
@@ -163,6 +163,22 @@ def GetUnableToViewGameSpectators(matrx: list[list[int]]) -> list[Tuple[int, int
     return result
 
 
+def SortLists(*lists: list[Any]) -> list[list[Any]]:
+    result = []
+    max_lng = 0
+    for i in range(len(lists)):
+        if len(lists[i]) > max_lng:
+            max_lng = len(lists[i])
+    for element_index in range(max_lng):
+        result.append([])
+        for j in range(len(lists)):
+            if element_index < len(lists[j]):
+                result[element_index].append(lists[j][element_index])
+            else:
+                result[element_index].append(None)
+    return result
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print(GetFirstNNumberFromFibonacci(10))
@@ -174,3 +190,5 @@ if __name__ == '__main__':
     # print(GetPalindromeData([123, 121, 989, 989, 123, 123, 123, 123, 123, 123, 123, 123, 123, 123]))
     # print(GetCharactersBasedOnAsciiCodeDivideRule(2, ["test", "hello", "lab002"],False))
     #print(GetUnableToViewGameSpectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
+    #print(SortLists([1,2,3], [5,6,7], ["a", "b", "c"]))
+
