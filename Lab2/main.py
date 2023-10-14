@@ -183,6 +183,24 @@ def SortBasedOnRule(tuples: list[tuple[str, str]]) -> list[tuple[str, str]]:
     return list(sorted(tuples, key=lambda x: x[1][2]))
 
 
+def GroupByRhyme(words: list[str]) -> list[list[str]]:
+    result = []
+    visited = list(False for i in range(len(words)))
+
+    for i in range(len(words)):
+        if visited[i]:
+            continue
+        visited[i] = True
+        result.append([words[i]])
+        for j in range(i + 1, len(words)):
+            if visited[j]:
+                continue
+            if words[i][-2:] == words[j][-2:]:
+                visited[j] = True
+                result[-1].append(words[j])
+    return result
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print(GetFirstNNumberFromFibonacci(10))
@@ -195,5 +213,5 @@ if __name__ == '__main__':
     # print(GetCharactersBasedOnAsciiCodeDivideRule(2, ["test", "hello", "lab002"],False))
     # print(GetUnableToViewGameSpectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
     # print(SortLists([1,2,3], [5,6,7], ["a", "b", "c"]))
-    #print(SortBasedOnRule([('abc', 'bcd'), ('abc', 'zza')]))
-
+    # print(SortBasedOnRule([('abc', 'bcd'), ('abc', 'zza')]))
+    print(GroupByRhyme(['ana', 'banana', 'carte', 'arme', 'parte']))
