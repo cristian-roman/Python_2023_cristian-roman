@@ -4,6 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import numpy as np
+from typing import List, Any
+
 
 def GetFirstNNumberFromFibonacci(n: int) -> list:
     if n <= 0:
@@ -31,15 +33,16 @@ def IsPrimeNumber(number: int) -> bool:
         return False
     if number == 2:
         return True
-    if(number % 2 == 0):
+    if (number % 2 == 0):
         return False
     for i in range(3, int(np.sqrt(number)) + 1, 2):
         if number % i == 0:
             return False
     return True
 
-def ListExtractor(a: list, b:list) -> list[list[int]]:
-    # a intersect with b
+
+def ListExtractor(a: list, b: list) -> list[list[int]]:
+    # A collection intersect with B collection
     lists = []
     intersect_result = []
     for i in a:
@@ -73,7 +76,8 @@ def ListExtractor(a: list, b:list) -> list[list[int]]:
 
     return lists
 
-def ComposeSong(music_syllabus:list, steps:list, startingPosition:int) -> list:
+
+def ComposeSong(music_syllabus: list, steps: list, startingPosition: int) -> list:
     result = [music_syllabus[startingPosition]]
     position = startingPosition
     for step in steps:
@@ -81,18 +85,34 @@ def ComposeSong(music_syllabus:list, steps:list, startingPosition:int) -> list:
         result.append(music_syllabus[position])
     return result
 
-def ReplaceElementsUnderFirstDiagonal(matrx:list[list]) -> list[list]:
+
+def ReplaceElementsUnderFirstDiagonal(matrx: list[list]) -> list[list]:
     for i in range(len(matrx)):
         for j in range(len(matrx[i])):
             if i > j:
                 matrx[i][j] = 0
     return matrx
 
+
+def GetNumbersAppearingXTimes(*collection: list[Any], x: int) -> list[Any]:
+    result = []
+    first_list = collection[0]
+    for comparison_element in first_list:
+        count = 1
+        for i in range(1, len(collection)):
+            for element in collection[i]:
+                if comparison_element == element:
+                    count += 1
+        if count == x:
+            result.append(comparison_element)
+    return result
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    #print(GetFirstNNumberFromFibonacci(10))
-    #print(FindPrimeNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 31]))
-    #print(ListExtractor([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]))
-    #print(ComposeSong(["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2], 2))
-    #print(ReplaceElementsUnderFirstDiagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-
+    # print(GetFirstNNumberFromFibonacci(10))
+    # print(FindPrimeNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 31]))
+    # print(ListExtractor([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]))
+    # print(ComposeSong(["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2], 2))
+    # print(ReplaceElementsUnderFirstDiagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+    print(GetNumbersAppearingXTimes([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
