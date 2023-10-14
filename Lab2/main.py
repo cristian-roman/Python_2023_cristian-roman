@@ -33,7 +33,7 @@ def IsPrimeNumber(number: int) -> bool:
         return False
     if number == 2:
         return True
-    if (number % 2 == 0):
+    if number % 2 == 0:
         return False
     for i in range(3, int(np.sqrt(number)) + 1, 2):
         if number % i == 0:
@@ -128,6 +128,32 @@ def GetReversedNumber(number: int) -> int:
     return reversed_number
 
 
+def GetCharactersBasedOnAsciiCodeDivideRule(x: int = 1, strings: list[str] = None, flag: bool = True) -> list[
+    list[str]]:
+    result = []
+    string_index = 0
+    for string in strings:
+        result.append(None)
+        for character in string:
+            if flag:
+                if ord(character) % x == 0:
+                    to_add = True
+                else:
+                    to_add = False
+            else:
+                if ord(character) % x != 0:
+                    to_add = True
+                else:
+                    to_add = False
+
+            if to_add:
+                if result[string_index] is None:
+                    result[string_index] = []
+                result[string_index].append(character)
+        string_index += 1
+    return result
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # print(GetFirstNNumberFromFibonacci(10))
@@ -136,4 +162,5 @@ if __name__ == '__main__':
     # print(ComposeSong(["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2], 2))
     # print(ReplaceElementsUnderFirstDiagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
     # print(GetNumbersAppearingXTimes([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
-    #print(GetPalindromeData([123, 121, 989, 989, 123, 123, 123, 123, 123, 123, 123, 123, 123, 123]))
+    # print(GetPalindromeData([123, 121, 989, 989, 123, 123, 123, 123, 123, 123, 123, 123, 123, 123]))
+    #print(GetCharactersBasedOnAsciiCodeDivideRule(2, ["test", "hello", "lab002"],False))
