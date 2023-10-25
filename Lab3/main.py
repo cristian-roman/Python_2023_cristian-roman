@@ -81,4 +81,15 @@ second_set = {1, 2, 3, 4, second_list}
 first_dict = {"a": 1, "b": first_set, "c": first_list}
 second_dict = {"a": 1, "b": second_set, "c": second_list}
 
-print(CompareTwoDictionaries(first_dict, second_dict))
+
+# print(CompareTwoDictionaries(first_dict, second_dict))
+
+
+def ComputeXmlElement(tag: str, content: str, **keyValueArgs) -> str:
+    ans = "<" + tag
+    for key in keyValueArgs.keys():
+        ans += " " + key + "=" + keyValueArgs[key]
+    ans += ">" + content + "</" + tag + ">"
+    return ans
+
+# print(ComputeXmlElement("a", "Hello there", href=" http://python.org ", _class=" my-link ", id=" someid "))
