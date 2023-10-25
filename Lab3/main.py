@@ -142,3 +142,26 @@ def CountUniqueAndDuplicateNumbers(numbers: list[int]) -> tuple[int, int]:
 
 
 # print(CountUniqueAndDuplicateNumbers([1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10]))
+
+
+def GetSetsOperationsDictionary(*sets) -> dict:
+    ans = {}
+    for i in range(len(sets)):
+        for j in range(i + 1, len(sets)):
+            intersection = sets[i] & sets[j]
+            union = sets[i] | sets[j]
+            difference_a = sets[i] - sets[j]
+            difference_b = sets[j] - sets[i]
+
+            set_i_ToString = str(sets[i])
+            set_j_ToString = str(sets[j])
+
+            ans[set_i_ToString + " & " + set_j_ToString] = intersection
+            ans[set_i_ToString + " | " + set_j_ToString] = union
+            ans[set_i_ToString + " - " + set_j_ToString] = difference_a
+            ans[set_j_ToString + " - " + set_i_ToString] = difference_b
+
+    return ans
+
+
+print(GetSetsOperationsDictionary({1, 2, 3}, {2, 3, 4}, {3, 4, 5}), sep="\n")
