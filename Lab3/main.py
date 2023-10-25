@@ -92,4 +92,39 @@ def ComputeXmlElement(tag: str, content: str, **keyValueArgs) -> str:
     ans += ">" + content + "</" + tag + ">"
     return ans
 
+
 # print(ComputeXmlElement("a", "Hello there", href=" http://python.org ", _class=" my-link ", id=" someid "))
+
+
+def ValidateDictionary(rules: set[tuple], dictionary: dict[str, str]) -> bool:
+    for rule in rules:
+        key = rule[0]
+        prefix = rule[1]
+        middle = rule[2]
+        suffix = rule[3]
+
+        if key not in dictionary.keys():
+            return False
+
+        if not dictionary[key].startswith(prefix):
+            return False
+
+        if dictionary[key].startswith(middle):
+            return False
+
+        if middle not in dictionary[key]:
+            return False
+
+        if dictionary[key].endswith(middle):
+            return False
+
+        if not dictionary[key].endswith(suffix):
+            return False
+    return True
+
+
+print(ValidateDictionary({("key1", "", "inside", ""), ("key2", "start", "middle", "winter")}, {"key1": "come inside, "
+                                                                                                       "it's too cold"
+                                                                                                       " out",
+                                                                                               "key3": "this is not "
+                                                                                                       "valid"}))
