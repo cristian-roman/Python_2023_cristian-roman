@@ -123,8 +123,22 @@ def ValidateDictionary(rules: set[tuple], dictionary: dict[str, str]) -> bool:
     return True
 
 
-print(ValidateDictionary({("key1", "", "inside", ""), ("key2", "start", "middle", "winter")}, {"key1": "come inside, "
-                                                                                                       "it's too cold"
-                                                                                                       " out",
-                                                                                               "key3": "this is not "
-                                                                                                       "valid"}))
+# print(ValidateDictionary({("key1", "", "inside", ""), ("key2", "start", "middle", "winter")}, {"key1": "come inside, "
+#                                                                                                        "it's too cold"
+#                                                                                                        " out",
+#                                                                                                "key3": "this is not "
+#                                                                                                        "valid"}))
+
+
+def CountUniqueAndDuplicateNumbers(numbers: list[int]) -> tuple[int, int]:
+    unique = set()
+    duplicate = set()
+    for number in numbers:
+        if number in unique:
+            duplicate.add(number)
+        else:
+            unique.add(number)
+    return len(unique), len(duplicate)
+
+
+# print(CountUniqueAndDuplicateNumbers([1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10]))
