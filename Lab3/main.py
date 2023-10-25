@@ -164,4 +164,4 @@ def GetSetsOperationsDictionary(*sets) -> dict:
     return ans
 
 
-print(GetSetsOperationsDictionary({1, 2, 3}, {2, 3, 4}, {3, 4, 5}), sep="\n")
+# print(GetSetsOperationsDictionary({1, 2, 3}, {2, 3, 4}, {3, 4, 5}), sep="\n")
