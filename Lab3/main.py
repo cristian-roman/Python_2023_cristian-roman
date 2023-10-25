@@ -188,3 +188,14 @@ def FindLoopInDict(dictionary: dict) -> list:
 
 
 # print(FindLoopInDict({'start': 'a', 'b': 'a', 'a': '6', '6': 'z', 'x': '2', 'z': '2', '2': '2', 'y': 'start'}))
+
+def GetNumberOfMatchingPositionalArguments(*args, **keywords) -> int:
+    ans = 0
+    for i in range(len(args)):
+        if args[i] in keywords.values():
+            ans += 1
+
+    return ans
+
+
+print(GetNumberOfMatchingPositionalArguments(1, 2, 3, 4, x=1, y=2, z=3, w=5))
