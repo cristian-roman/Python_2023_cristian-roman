@@ -44,14 +44,17 @@ def CompareTwoLists(a: list, b: list) -> bool:
 
 
 def CompareTwoSets(a: set, b: set) -> bool:
+    if len(a) != len(b):
+        return False
     for element in a:
         if element not in b:
             return False
-
     return True
 
 
 def CompareTwoDictionaries(a: dict, b: dict) -> bool:
+    if len(a) != len(b):
+        return False
     ans: bool = True
     for key in a.keys():
         if key not in b.keys():
@@ -67,3 +70,15 @@ def CompareTwoDictionaries(a: dict, b: dict) -> bool:
         else:
             ans &= a[key] == b[key]
     return ans
+
+
+first_list = tuple[1, 2, 3, 4, 5]
+second_list = tuple[1, 2, 3, 4, 5]
+
+first_set = {1, 2, 3, 4, first_list}
+second_set = {1, 2, 3, 4, second_list}
+
+first_dict = {"a": 1, "b": first_set, "c": first_list}
+second_dict = {"a": 1, "b": second_set, "c": second_list}
+
+print(CompareTwoDictionaries(first_dict, second_dict))
