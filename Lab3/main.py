@@ -165,3 +165,26 @@ def GetSetsOperationsDictionary(*sets) -> dict:
 
 
 # print(GetSetsOperationsDictionary({1, 2, 3}, {2, 3, 4}, {3, 4, 5}), sep="\n")
+
+
+def FindLoopInDict(dictionary: dict) -> list:
+    ans = list()
+
+    startKey = "start"
+    startValue = dictionary.get(startKey)
+
+    visited = set()
+    visited.add(startValue)
+    ans.append(startValue)
+
+    nextPos = dictionary.get(startValue)
+
+    while nextPos not in visited:
+        visited.add(nextPos)
+        ans.append(nextPos)
+        nextPos = dictionary.get(nextPos)
+
+    return ans
+
+
+# print(FindLoopInDict({'start': 'a', 'b': 'a', 'a': '6', '6': 'z', 'x': '2', 'z': '2', '2': '2', 'y': 'start'}))
