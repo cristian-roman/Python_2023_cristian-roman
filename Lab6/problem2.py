@@ -12,10 +12,11 @@ class Problem2:
             for file in os.listdir(path):
                 if os.path.isdir(file):
                     continue
+                file_path = os.path.join(path, file)
+                extension = file.split(".")[-1]
+                new_file_name = os.path.splitext(file_path)[0] + str(cnt) + '.' + extension
                 try:
-                    extension = file.split(".")[-1]
-                    new_file_name = os.path.join(path, f"file{cnt}.{extension}")
-                    os.rename(os.path.join(path, file), new_file_name)
+                    os.rename(file_path, new_file_name)
                     cnt += 1
                 except OSError:
                     print("Could not rename file: " + file)
