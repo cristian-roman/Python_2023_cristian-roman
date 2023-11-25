@@ -13,7 +13,7 @@ class Problem2:
                 if os.path.isdir(file):
                     continue
                 try:
-                    extension = file.split(".")[1]
+                    extension = file.split(".")[-1]
                     new_file_name = os.path.join(path, f"file{cnt}.{extension}")
                     os.rename(os.path.join(path, file), new_file_name)
                     cnt += 1
