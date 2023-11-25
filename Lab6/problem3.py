@@ -10,15 +10,14 @@ class Problem3:
         total_size = 0
         number_of_files = 0
         try:
-            for file in os.listdir(path):
-                if os.path.isdir(file):
-                    continue
-                try:
-                    size = os.path.getsize(file)
-                    total_size += size
-                    number_of_files += 1
-                except OSError:
-                    print("Could not get size of file: " + file)
+            for root, directories, files in os.walk(path):
+                for file in files:
+                    try:
+                        size = os.path.getsize(os.path.join(root, file))
+                        total_size += size
+                        number_of_files += 1
+                    except OSError:
+                        print("Could not get size of file: " + file)
         except IOError:
             print("Directory not found: " + path)
 
