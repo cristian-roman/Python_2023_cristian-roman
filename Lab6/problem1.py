@@ -1,8 +1,11 @@
 import os
 import sys
 
-
 class Problem1:
+
+    class ExtensionNotFoundException(Exception):
+        def __init__(self, extension:str):
+            super().__init__(f"Extension {extension} not found.")
     @staticmethod
     def solve():
         path = sys.argv[1]
@@ -23,8 +26,8 @@ class Problem1:
                         except IOError:
                             print("Could not read file: " + file)
                     else:
-                        raise IOError
-                except IOError:
+                        raise Problem1.ExtensionNotFoundException(file_extension)
+                except Problem1.ExtensionNotFoundException:
                     print(f"For file {file} extension {file_extension} is not valid.")
         except IOError:
             print("Directory not found: " + path)
