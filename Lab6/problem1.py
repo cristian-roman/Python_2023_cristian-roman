@@ -1,11 +1,12 @@
 import os
 import sys
 
-class Problem1:
 
+class Problem1:
     class ExtensionNotFoundException(Exception):
-        def __init__(self, extension:str):
+        def __init__(self, extension: str):
             super().__init__(f"Extension {extension} not found.")
+
     @staticmethod
     def solve():
         path = sys.argv[1]
