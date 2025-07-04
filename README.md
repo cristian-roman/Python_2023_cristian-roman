@@ -42,10 +42,6 @@ Each `LabX` folder contains a `main.py` file demonstrating core programming conc
 
 3. You can also open the project in **PyCharm** for full IDE support.
 
-## 📜 License
-
-This repository is for educational purposes and personal use. Contact the author for permissions beyond these scopes.
-
 ---
 
 ✍️ *Developed by Cristian Roman – Python course, 2023.*
